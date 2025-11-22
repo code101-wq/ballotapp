@@ -7,9 +7,9 @@ import random
 # --- Flask Initialization and MongoDB Setup (No changes needed here) ---
 app = Flask(__name__)
 app.secret_key = os.urandom(24) 
-MONGO_URI = "mongodb://localhost:27017/PrivateBallotDB"
+# MONGO_URI = "mongodb://localhost:27017/PrivateBallotDB"
 try:
-    client = MongoClient(MONGO_URI)
+    client = MongoClient('mongodb+srv://beri_user:beri@intro.vd3ychr.mongodb.net/?retryWrites=true&w=majority&appName=Intro')
     db = client.get_database("PrivateBallotDB") 
     ballots_collection = db.ballots
     admins_collection = db.admins
@@ -244,4 +244,5 @@ def process_pick(ballot_id):
                                is_error=True)
 if __name__ == '__main__':
     print("Application starting... Access at http://127.0.0.1:5000/")
+
     app.run(debug=True, use_reloader=False)
