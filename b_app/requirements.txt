@@ -1,6 +1,6 @@
 Flask
 Gunicorn
 pymongo
-bson
 Werkzeug
 python-dotenv
+
