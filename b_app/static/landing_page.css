@@ -1,0 +1,166 @@
+ /* --- Main Content & Placeholder --- 
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .image-placeholder {
+            width: 5rem; 
+            height: 5rem; 
+            background-color: #C0C0C0; 
+            border-radius: 50%; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.5rem; 
+            color: #333;
+            border: 2px dashed #999;
+        }
+        
+        /* --- Button Group Styles --- 
+        .button-group {
+            display: flex; /* Arranges the 'buttons' horizontally 
+            gap: 1.5rem; /* Space between the buttons 
+            margin-top: 1.5rem; /* Space below the heading 
+            margin-bottom: 2rem; /* Space before the paragraph text 
+        }
+        
+        .cta-button {
+            /* Styles for the links to make them look like buttons
+            background-color: var(--navbar-bg-color);
+            color: var(--navbar-text-color);
+            text-decoration: none; /* Remove underline from link 
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.25rem; /* 20px - made it relative 
+            font-weight: 700;
+            
+            /* Sizing and Centering 
+            min-width: 12rem; /* Ensure equal size 
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            
+            /* Visual effects 
+            display: inline-block; /* Essential for padding/width to work 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #633318; /* Slightly darker background on hover 
+            color: var(--button-hover-color);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- Footer Styles --- (Unchanged from your previous version)
+        .footer {
+            background-color: var(--navbar-bg-color);
+            color: var(--navbar-text-color);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+
+        /* --- Responsive Styles --- (Unchanged from your previous version) 
+        @media (max-width: 768px) {
+            
+            
+            .button-group {
+                flex-direction: column; /* Stack buttons vertically on small screens 
+                gap: 1rem;
+            }
+            
+            .cta-button {
+                min-width: 80%; /* Make buttons full-width on mobile 
+            }
+        } */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    flex-grow: 1; /* Allows content to fill space */
+}
+
+.image-placeholder {
+    width: 8rem;
+    height: 8rem;
+    background-color: var(--cta-primary); /* Rich Green */
+    border-radius: 50%;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 5px solid var(--cta-secondary); /* Gold/Yellow Border */
+}
+
+.main-content h1 {
+    font-size: 2.8rem;
+    color: var(--navbar-bg-color); /* Deep Brown Title */
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.main-content p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 10px auto;
+}
+
+.button-group {
+    display: flex;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.cta-button {
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--cta-primary);
+}
+
+/* Primary Button: Green Fill */
+.cta-button:not(.secondary-cta) {
+    background-color: var(--cta-primary);
+    color: var(--navbar-text-color);
+}
+
+.cta-button:not(.secondary-cta):hover {
+    background-color: #005000; /* Darker Green */
+    transform: translateY(-2px);
+}
+
+/* Secondary Button: Gold/Yellow Outline */
+.secondary-cta {
+    background-color: transparent;
+    color: var(--cta-primary);
+    border-color: var(--cta-secondary);
+}
+
+.secondary-cta:hover {
+    background-color: var(--cta-secondary);
+    color: var(--page-text-color);
+    transform: translateY(-2px);
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: var(--navbar-bg-color);
+    color: var(--navbar-text-color);
+    font-size: 0.9rem;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}

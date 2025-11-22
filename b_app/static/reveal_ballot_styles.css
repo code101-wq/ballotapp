@@ -1,0 +1,42 @@
+/* Inherits general styles from layout_t.css */
+
+.message-box {
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.success {
+    background-color: #e6ffe6; /* Light green background */
+    border: 3px solid var(--cta-primary);
+}
+
+.error {
+    background-color: #ffeeee; /* Light red background */
+    border: 3px solid var(--button-hover-color);
+}
+
+.success-title {
+    color: var(--cta-primary);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.error-title {
+    color: var(--button-hover-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.reveal-result {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--navbar-bg-color);
+    background-color: var(--cta-secondary); /* Gold highlight */
+}
