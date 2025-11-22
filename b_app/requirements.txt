@@ -1,5 +1,6 @@
-flask
-os
+Flask
+Gunicorn
 pymongo
 bson
-random
+Werkzeug
+python-dotenv
