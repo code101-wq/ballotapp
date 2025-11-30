@@ -1,6 +1,0 @@
-Flask
-Gunicorn
-pymongo
-Werkzeug
-python-dotenv
-
