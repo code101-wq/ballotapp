@@ -1,0 +1,267 @@
+:root {
+    /* African-Inspired Colors */
+    --navbar-bg-color: #743B1B; /* Deep Brown/Maroon */
+    --page-bg-color: #FFFFD0; /* Light Yellow/Cream */
+    --navbar-text-color: #FFFFFF;
+    --page-text-color: #000000;
+    --button-hover-color: #f1570f; /* Vibrant Orange/Red */
+    --cta-primary: #008000; /* Rich Green for primary action */
+    --cta-secondary: #FFD700; /* Gold/Yellow for secondary action */
+    --warning-color: #D32F2F; /* Red for warnings/errors */
+}
+
+/* --- Base Body & Typography --- */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--page-bg-color);
+    color: var(--page-text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensures content block fills space */
+.main-wrapper {
+    flex-grow: 1;
+}
+
+
+/* --- Navbar Styles --- */
+.navbar {
+    background-color: var(--navbar-bg-color);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    color: var(--navbar-text-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 3; /* Ensure brand is above collapsed menu */
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    margin-left: auto; 
+    transition: all 0.3s ease;
+}
+
+.nav-item {
+    margin-left: 2rem;
+}
+
+.nav-link {
+    color: var(--navbar-text-color);
+    text-decoration: none;
+    font-weight: 400;
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--button-hover-color);
+}
+
+/* Hamburger icon for mobile */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    height: 20px;
+    width: 25px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: var(--navbar-text-color);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+    transform-origin: 1px;
+}
+
+/* Hamburger icon animation when active */
+.menu-toggle.is-active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 0px);
+}
+.menu-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -1px);
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: nowrap; /* Prevent wrap on the primary row */
+    }
+
+    .navbar-nav {
+        /* Default state: hidden and off-screen */
+        display: flex; 
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 60px; /* Position below the navbar */
+        left: 0;
+        transform: translateX(-100%); /* Slide off-screen to the left */
+        background-color: var(--navbar-bg-color);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        overflow: hidden;
+        margin-left: 0;
+        z-index: 1;
+    }
+
+    .navbar-nav.active {
+        /* Active state: slide into view */
+        transform: translateX(0); 
+    }
+
+    .nav-item {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+    }
+    
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 15px 0;
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+/* --- Universal Component Styles (For responsiveness) --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 40px;
+}
+
+.form-card, .message-box {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+h1, h2 {
+    color: var(--navbar-bg-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Button Styling (Apply these classes in templates) */
+.cta-button {
+    text-decoration: none;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s;
+    display: inline-block;
+    text-align: center;
+}
+
+.cta-button.primary {
+    background-color: var(--cta-primary);
+    color: var(--navbar-text-color);
+}
+
+.cta-button.primary:hover {
+    background-color: #006400; /* Darker green */
+    transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+    background-color: var(--cta-secondary);
+    color: var(--page-text-color);
+    border: 1px solid #c9b100;
+}
+
+.cta-button.secondary:hover {
+    background-color: #e0c100; 
+    transform: translateY(-2px);
+}
+
+.cta-button.warning {
+    background-color: var(--warning-color);
+    color: var(--navbar-text-color);
+}
+
+.cta-button.warning:hover {
+    background-color: #a02020;
+    transform: translateY(-2px);
+}
+
+/* Form Styles for responsiveness */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Crucial for responsive width */
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.error-message {
+    color: var(--warning-color);
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Footer Style (Simple, pushed to bottom by flex in body) */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* Pushes footer to the bottom */
+}

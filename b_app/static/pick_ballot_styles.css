@@ -1,0 +1,54 @@
+/* Inherits general styles from layout_t.css */
+
+.status-message {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--cta-primary); /* Rich Green */
+}
+
+.ballot-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.ballot-form {
+    display: contents; /* Allows button to be the grid item */
+}
+
+.ballot-box {
+    background-color: var(--navbar-bg-color); /* Deep Brown */
+    color: var(--navbar-text-color);
+    border: 5px solid var(--cta-secondary); /* Gold/Yellow border */
+    border-radius: 12px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px; /* Adjust margin if gap is not enough */
+}
+
+.ballot-box:hover {
+    background-color: var(--button-hover-color); /* Vibrant Orange/Red */
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    .ballot-box {
+        width: 120px;
+        height: 120px;
+        font-size: 1.2rem;
+    }
+}

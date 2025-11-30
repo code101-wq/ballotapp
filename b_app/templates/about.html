@@ -1,0 +1,49 @@
+{% extends 'layout.html'%}
+    
+{% block title %} About {% endblock%}
+
+{% block head_styles %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='about_style.css') }}">
+{% endblock %}
+    
+{% block content %}
+<div class="main_block">
+    <h2 class="main_heading"> About Ballot Site </h2>
+    <section class="info-section mission">
+        <h3>About</h3>
+        <p>This Ballot site was created to facilitate fair, transparent, and anonymous allocation of limited resources, tasks, or prizes among a defined group of users. Our system guarantees that each registered user can select **one and only one** private ballot during an active session, ensuring a level playing field for everyone.</p>
+    </section>
+
+    <section class="info-section integrity">
+        <h3>Integrity and Fairness</h3>
+        <p>Built by the Engineering team at iCISTEM, the core principle of this application is fairness. Once a user logs in and picks a ballot, that selection is immediately and atomically recorded in the database. This prevents any other user from selecting the same ballot, even in a high-traffic moment. The single-pick rule is enforced across devices and future logins using secure session management and persistent database checks.</p>
+    </section>
+
+    <section class="info-section technology">
+        <h3>Technology Stack</h3>
+        <p> Developed by the engineering team at iCISTEM, the core tools are</p>
+        <ul>
+            <li><strong>Frontend:</strong> HTML/CSS with Jinja templating.</li>
+            <li><strong>Backend:</strong> Flask (Python).</li>
+            <li><strong>Database:</strong> MongoDB, leveraging atomic operations for ballot selection integrity.</li>
+            <li><strong>Deployment:</strong> Render, ensuring global accessibility and stable hosting.</li>
+        </ul>
+    </section>
+    <section class="info-section sponsors">
+        <h3>Our Sponsors</h3>
+        <p>This website is powered by iCISTEM Foundation.</p>
+        <div class="sponsor-logo-container">
+            <!-- Using url_for to correctly link the image from the static/assets/images folder -->
+            <img src="{{ url_for('static', filename='assets/images/icistem.jpg') }}" alt="iCISTEM Logo" class="sponsor-logo">
+        </div>
+    </section>
+    
+    <div class="cta-about">
+        <a href="{{ url_for('root') }}" class="cta-button primary">Return Home</a>
+        <a href="{{ url_for('user_login') }}" class="cta-button secondary">Start Picking</a>
+    </div>
+</div>
+<footer class="footer">
+        &copy; 2025 PrivateBallot | v1.0.3
+    </footer>
+{% endblock %}

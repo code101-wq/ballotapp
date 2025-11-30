@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block title %} Re-authenticate for Results {% endblock %}
+
+{% block head_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_styles.css') }}">
+    <style>
+        .auth-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        .card-container {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            text-align: left;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+        }
+        .error-message {
+            color: #dc2626;
+            background: #fef2f2;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #fca5a5;
+            margin-bottom: 1rem;
+        }
+        .button-primary {
+            background-color: #10b981; /* Green */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border: none;
+        }
+        .button-primary:hover {
+            background-color: #059669;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        .back-link:hover {
+            color: #1f2937;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="main-content auth-page">
+    <div class="card-container">
+        <h1 class="text-3xl font-bold mb-4">🔒 Secure Results Access</h1>
+        <p class="mb-6 text-gray-600">Please re-enter your admin credentials to view the confidential ballot-user name mapping.</p>
+        
+        <form method="POST" action="{{ url_for('reveal_auth') }}" class="auth-form">
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+            <div class="form-group">
+                <label for="username">Admin Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Admin Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="button-primary">Authenticate</button>
+        </form>
+        <a href="{{ url_for('admin_dashboard') }}" class="back-link">← Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}

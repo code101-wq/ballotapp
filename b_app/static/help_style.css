@@ -1,0 +1,165 @@
+/* Inherit base styles from the parent template's CSS variables */
+
+.main_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+.main_heading {
+    font-size: 3rem;
+    color: var(--navbar-bg-color); /* Deep Brown */
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 3px solid var(--cta-primary); /* Green underline */
+    padding-bottom: 10px;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 800px;
+}
+
+/* --- STEP FLOW STYLES --- */
+.steps-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    position: relative;
+    padding: 20px 0;
+}
+
+/* Vertical line connecting the steps (visually representing the flow) */
+.steps-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%; /* Center the line */
+    width: 4px;
+    background-color: var(--cta-secondary); /* Gold/Yellow line */
+    border-radius: 2px;
+    transform: translateX(-50%);
+}
+
+.step-item {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10; /* Ensure step items are above the line */
+}
+
+/* Alternate sides for steps for better visual flow */
+.step-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.step-item:nth-child(even) {
+    flex-direction: row;
+}
+
+.step-number {
+    /* The circular element */
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 50%;
+    background-color: var(--cta-primary); /* Rich Green */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    font-weight: bold;
+    box-shadow: 0 0 0 6px var(--background-color), 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.step-number:hover {
+    transform: scale(1.05);
+}
+
+.step-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 0 30px;
+    flex-grow: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+}
+
+.step-content:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.step-title {
+    font-size: 1.5rem;
+    color: var(--navbar-bg-color);
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--cta-secondary);
+    padding-bottom: 5px;
+}
+
+.step-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Call-to-Action section */
+.cta-help {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 768px) {
+    .steps-container::before {
+        left: 40px; /* Move vertical line to the left */
+        transform: translateX(0);
+    }
+    
+    .step-item {
+        width: 100%;
+        /* Force single column layout */
+        flex-direction: row !important; 
+        justify-content: flex-start;
+    }
+
+    .step-number {
+        margin-right: 20px;
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        min-height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .step-content {
+        margin: 0; /* Remove horizontal margins */
+    }
+
+    .step-number {
+        box-shadow: 0 0 0 6px var(--background-color), 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .main_heading {
+        font-size: 2.5rem;
+    }
+}

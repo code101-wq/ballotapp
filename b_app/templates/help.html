@@ -1,0 +1,67 @@
+{% extends 'layout.html'%}
+
+{% block title %} Help {% endblock%}
+
+{% block head_styles %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='help_style.css') }}">
+{% endblock %}
+ 
+{% block content %}
+<div class="main_block">
+ <h2 class="main_heading"> How to Use the Ballot Site </h2>
+
+    <p class="description">
+        This process is designed to be fair, simple, and ensure every registered user gets one unique, private ballot. Follow the steps below to participate in the draw.
+    </p>
+
+    <div class="steps-container">
+        
+        <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3 class="step-title">Log In or Register</h3>
+                <p>Enter your name and email on the login page. The name should match what the balot admin expects to be entered. If you are a new user, a profile is created immediately. If you are a returning user, your previous status is retrieved.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3 class="step-title">Check Status</h3>
+                <p>The system automatically checks if you have already picked a ballot. If you have, you are immediately shown your previous result (Step 5).</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3 class="step-title">View Available Ballots</h3>
+                <p>If you have not picked, you will see a list of anonymous, shuffled ballots. You only get one chance, so select carefully! The number of remaining ballots is displayed prominently.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h3 class="step-title">The Atomic Pick</h3>
+                <p>When you click a ballot, the system marks the ballot as picked and assign it to you. This guarantees no one else can pick the same ballot, even milliseconds later.</p>
+            </div>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h3 class="step-title">Ballot Reveal</h3>
+                <p>You are instantly redirected to the reveal page where your specific ballot result is shown. Your user session and profile are marked as 'picked' permanently.</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="cta-help">
+        <a href="{{ url_for('user_login') }}" class="cta-button primary">Go to Login</a>
+        <a href="{{ url_for('website_about') }}" class="cta-button secondary">Read About Us</a>
+    </div>
+
+</div>
+{% endblock %}

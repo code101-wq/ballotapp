@@ -1,0 +1,79 @@
+.sign-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    flex-grow: 1;
+}
+
+.form-card {
+    background-color: #FFFFFF; /* White card background */
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-top: 5px solid var(--button-hover-color);
+}
+
+.form-card h2 {
+    color: var(--navbar-bg-color);
+    margin-bottom: 25px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: var(--navbar-bg-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-size: 1rem;
+}
+
+.btn-submit {
+    background-color: var(--cta-primary); /* Rich Green */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--button-hover-color); /* Vibrant Orange/Red */
+}
+
+.form-note {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-top: 20px;
+}
+
+.error-message {
+    color: red;
+    background-color: #ffeaea;
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}

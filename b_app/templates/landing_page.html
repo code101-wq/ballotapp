@@ -1,0 +1,38 @@
+{% extends 'layout.html'%}
+    
+    
+{% block title %} Home {% endblock%}
+
+{% block head_styles %} 
+    <link rel="stylesheet" href="{{ url_for('static', filename='landing_page.css') }}">
+{% endblock %}
+
+    
+{% block content %}
+<div class="main-content">
+    <div class="image-placeholder" title="African-inspired pattern placeholder">
+        <img src="{{ url_for('static', filename='assets/images/home_pic.jpg') }}" alt="Home pic" class="sponsor-logo">
+
+    </div>
+    <h1>Secure and Private Balloting</h1>
+    
+    <div class="button-group">
+        <a href="{{ url_for('user_login') }}" class="cta-button">Pick a Ballot</a>
+        <a href="{{ url_for('create_ballots') }}" class="cta-button secondary-cta">Create Ballot Session</a>
+    </div>
+    
+    <p>Your platform for creating and selecting anonymous polls and ballots with the highest level of confidentiality.</p>
+    <p>Click a button above to get started.</p>
+
+    <div class="feature-teaser">
+        Bubble Gum 🍬 Coming Soon...
+    </div>
+
+</div>
+
+<footer class="footer">
+    &copy; 2025 PrivateBallot | All Rights Reserved. <br>
+    An iCISTEM product
+</footer>
+
+{% endblock %}

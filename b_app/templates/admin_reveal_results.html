@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %} Confidential Results Summary {% endblock %}
+
+{% block head_styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin_styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content admin-page">
+    <div class="admin-header">
+        <h1>✅ Final Ballot/User Mapping</h1>
+        <p>This table lists every picked ballot and the user name associated with the pick. This view is for administrative audit only.</p>
+    </div>
+
+    {% if results_summary %}
+        <div class="results-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ballot Item</th>
+                        <th>Picked By User Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results_summary %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td class="font-semibold">{{ result.ballot_name }}</td>
+                        <td class="text-blue-700 font-medium">{{ result.user_name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{{ url_for('admin_dashboard') }}" class="admin-link primary mt-8">← Return to Dashboard</a>
+    {% else %}
+        <p class="text-xl mt-8">No picked ballots found in the current session.</p>
+        <a href="{{ url_for('admin_dashboard') }}" class="admin-link primary mt-4">← Return to Dashboard</a>
+    {% endif %}
+
+</div>
+{% endblock %}
