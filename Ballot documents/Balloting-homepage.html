@@ -1,0 +1,33 @@
+<!DOCTYPE html><head>
+<title>House Balloting website home page</title>
+<link rel="stylesheet", href="Bstyle1.css">
+</head>
+<body id="hold">
+    <center> <h2>Welcome To the House Balloting Site</h2></center>
+    
+    <div id="box">
+        <p>Each Number found here corresponds to a person in the house and whoever you pick is the person you buying the gift for</p>
+        <script src="script.js" type="text/javascript"></script>  
+        <script src="Pool.json" type="text/javascript"></script>
+        <p id = "num"> 
+            <form name='balotradio' action='' onsubmit='return submit(); ' method='post'>
+                <input name ='balot' type="radio" id="1" value="1" />1 <br>
+                <input name ='balot' type="radio" id="2" value="2" />2 <br>
+                <input name ='balot' type="radio" id="3" value="3" />3 <br>
+                <input name ='balot' type="radio" id="4" value="4" />4 <br>
+                <input name ='balot' type="radio" id="5" value="5" />5 <br>
+                <input name ='balot' type="radio" id="6" value="6" />6 <br>
+                <input name ='balot' type="radio" id="7" value="7" />7 <br>
+                <input name ='balot' type="radio" id="8" value="8" />8 <br>
+                <input name ='balot' type="radio" id="9" value="9" />9 <br>
+                <input name ='balot' type="radio" id="10" value="10" />10 <br>
+                <input name ='balot' type="radio" id="11" value="11" />11 <br>
+                <input name ='balot' type="radio" id="12" value="12" />12 <br>
+                <input name = 'ballot' type = 'submit' value = 'submit' onclick='validateform();'/> 
+            </form>
+        </p>
+        
+    </div>
+
+</body>
+</html>
