@@ -180,20 +180,50 @@ def user_login():
         user_email = request.form.get('email')
         # Check if user already exists
         # 1. Check if user already exists
+        # remove from here
+
+        if 'user_id' in session:
+            current_user_id = ObjectId(session['user_id'])
+            current_user_doc = users_collection.find_one({'_id': current_user_id})
+
+            # Check if the user is already picked (as per your assertion)
+            if current_user_doc and current_user_doc.get('has_picked'):
+                # ASSERTION MET: User already picked. Redirect them to view their pick, 
+                # ignoring the new email submitted in the POST form.
+                # NOTE: The GET logic at the top of this route already handles the reveal,
+                # so we just redirect to the start of the session check.
+                return redirect(url_for('user_login'))
+            
+            # If they are logged in but haven't picked, and they submit a *different* email, deny it.
+            if current_user_doc and current_user_doc.get('email') != user_email:
+                error = f"A user ({current_user_doc.get('email')}) is already logged into this session. Please clear your cookies to log in as a different user."
+                return render_template('user_login.html', error=error)
+            
+            # If the email matches the current session, proceed as normal (re-validate session)
+        # --- End Session Guard ---
+        # end addition here
+
         existing_user = users_collection.find_one({'email': user_email})
-        
+
         if existing_user:
-            # User exists: Use their existing _id
+            
+            # 2. If the user exists AND the current session is NEW (i.e., 'user_id' is NOT in session),
+            # this means it's a login attempt from a new device/browser.
+            if 'user_id' not in session:
+                error = f"The email '{user_email}' is already registered in the system. To ensure a single vote per person, you must use the device where you first logged in or contact the administrator if you need to clear your session."
+                return render_template('user_login.html', error=error)
+            
+            # If 'user_id' IS in session and we reached this point, 
+            # it means the existing guards allowed it (i.e., email matched the current session ID).
             user_doc = existing_user
+            
         else:
             # New User: Insert and get the document
             new_user_doc = {'name': user_name, 'email': user_email, 'has_picked': False}
             insert_result = users_collection.insert_one(new_user_doc)
-            
-            # Since we inserted, we fetch the complete document back (optional, but clean)
-            user_doc = users_collection.find_one({'_id': insert_result.inserted_id}) 
+            user_doc = users_collection.find_one({'_id': insert_result.inserted_id})
 
-        
+        # end here with deleting
         if user_doc:
             # 2. Set the session user ID using the actual MongoDB ObjectId
             session['user_id'] = str(user_doc['_id'])
@@ -358,7 +388,7 @@ def process_pick(ballot_id):
     # Ensure user is logged in before proceeding
     
     if 'user_id' not in session:
-        return redirect(url_for('userLogin'))
+        return redirect(url_for('user_login'))
     
     # Critical Check 2: Already picked check (second layer of enforcement)
     if session.get('has_picked'):
@@ -387,9 +417,10 @@ def process_pick(ballot_id):
     
     # Perform the Similarity Check
     if check_name_similarity(user_name, ballot_name):
-        return render_template('reveal_ballot.html',
+        """return render_template('reveal_ballot.html',
                                ballot_name=f"The ballot name **'{ballot_name}'** is too similar to your name (**'{user_name}'**). Please select a different, random ballot.",
-                               is_error=True) 
+                               is_error=True) """
+        return redirect(url_for('pick_ballot'))
     
     # Attempt to pick the ballot, ensuring it is NOT picked and the user hasn't picked yet
     # We explicitly look for a user document where 'has_picked' is False before updating
@@ -420,9 +451,12 @@ def process_pick(ballot_id):
         return render_template('reveal_ballot.html', 
                                ballot_name="SORRY! That ballot was just picked by someone else. Please try again.", 
                                is_error=True)
+        """
+        return redirect(url_for('pick_ballot'))"""
 
 
 if __name__ == '__main__':
     print("Application starting... Access at http://127.0.0.1:5000/")
 
     app.run(debug=True, use_reloader=False)
+
